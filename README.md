@@ -4,6 +4,8 @@
 **Email:** jordanaftermidnight@gmail.com  
 **Project:** "Proving We Live in a Simulation" + Advanced Data Analysis with NumPy
 
+⚡ **Simplified & Streamlined!** - Now with single-file execution and minimal dependencies
+
 This project combines two fascinating demonstrations:
 1. **Simulation Proof**: Recreating the viral "dog breeder picture shredding" effect using NumPy
 2. **Data Analytics**: Web scraping with comprehensive NumPy-based statistical analysis
@@ -60,14 +62,23 @@ pip install -r requirements.txt
 
 ### Run Complete Demonstration
 ```bash
-python examples/complete_demonstration.py
+python3 main.py
 ```
 
-This will:
+**That's it!** This single command will:
 1. 🤖 Generate the "simulation proof" showing impossible image multiplication
-2. 📊 Scrape data from multiple sources and perform NumPy analysis
-3. 📈 Create comprehensive visualizations
+2. 📊 Perform comprehensive NumPy analysis with all required operations
+3. 📈 Create visualizations saved as 'practical_task_p2_results.png'
 4. 📋 Print detailed analysis reports
+
+### Alternative Options
+```bash
+# Quick verification test
+python3 test_quick.py
+
+# Original complex demonstration (if you want all modules)
+python3 examples/complete_demonstration.py
+```
 
 ### Individual Task Examples
 
