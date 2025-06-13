@@ -1,10 +1,11 @@
-# Core dependencies for Practical Task P2
+# Core dependencies for Practical Task P2 - Simplified
 numpy>=1.24.0
 matplotlib>=3.6.0
-scipy>=1.10.0
 
-# Optional: For web data simulation (can be removed if not needed)
-requests>=2.28.0
-
-# Development and testing
+# Development and testing (optional)
 pytest>=7.0.0
+
+# Advanced modules dependencies (only needed for examples/complete_demonstration.py)
+# Uncomment if you want to run the full complex demonstration:
+# scipy>=1.10.0
+# requests>=2.28.0
