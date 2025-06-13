@@ -1,10 +1,14 @@
 """
 Complete Demonstration: Simulation Proof + Data Analysis
 
+Author: George Dorochov
+Email: jordanaftermidnight@gmail.com
+
 This script combines both tasks:
 1. "Prove we live in a simulation" using the dog breeder picture shredding effect
 2. Web scraping with NumPy data analysis including descriptive statistics and filtering
 
+Features comprehensive NumPy operations including mean, sum, filtering, and advanced analytics.
 Run this script to see both demonstrations in action!
 """
 

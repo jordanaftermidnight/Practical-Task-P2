@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
 Quick test script to verify both tasks work correctly.
+
+Author: George Dorochov
+Email: jordanaftermidnight@gmail.com
 """
 
 import sys

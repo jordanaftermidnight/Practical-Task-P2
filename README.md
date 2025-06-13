@@ -1,6 +1,8 @@
 # Practical Task P2 - Advanced NumPy Toolkit
 
-🤖 **"Proving We Live in a Simulation"** + 📊 **Advanced Data Analysis with NumPy**
+**Author:** George Dorochov  
+**Email:** jordanaftermidnight@gmail.com  
+**Project:** "Proving We Live in a Simulation" + Advanced Data Analysis with NumPy
 
 This project combines two fascinating demonstrations:
 1. **Simulation Proof**: Recreating the viral "dog breeder picture shredding" effect using NumPy
@@ -235,6 +237,9 @@ Feel free to contribute by:
 
 This project is for educational purposes, demonstrating advanced NumPy techniques through creative and analytical applications.
 
+**Author:** George Dorochov  
+**Email:** jordanaftermidnight@gmail.com
+
 ---
 
-🤖 **Fun Fact**: The "simulation proof" is purely for entertainment - it demonstrates how mathematical operations can create seemingly impossible effects, but it's just clever array manipulation, not actual evidence of living in a simulation! 😄
+**Note**: The "simulation proof" is purely for entertainment and educational purposes - it demonstrates how mathematical operations can create seemingly impossible effects through clever NumPy array manipulation. This is not actual evidence of living in a simulation, but rather a showcase of advanced array processing techniques.

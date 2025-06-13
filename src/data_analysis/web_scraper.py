@@ -1,8 +1,11 @@
 """
 Web Scraping Module for Data Collection and Analysis
 
+Author: George Dorochov
+Email: jordanaftermidnight@gmail.com
+
 This module scrapes data from various sources and converts it into NumPy arrays
-for statistical analysis and processing.
+for statistical analysis and processing using advanced NumPy operations.
 """
 
 import numpy as np
@@ -28,131 +31,232 @@ class WebScraper:
         
     def scrape_weather_data(self) -> Dict[str, np.ndarray]:
         """
-        Scrape weather data from a public API and convert to NumPy arrays.
+        Generate realistic weather data for multiple global cities.
+        Based on historical climate patterns and seasonal variations.
         """
         try:
-            # Using a free weather API (OpenWeatherMap requires key, so we'll simulate)
-            # In practice, you'd use: api.openweathermap.org/data/2.5/weather
-            
-            # Simulate weather data for multiple cities
-            cities = ['New York', 'London', 'Tokyo', 'Sydney', 'Paris', 'Berlin', 'Moscow', 'Beijing']
+            # Major global cities with realistic climate data
+            cities = [
+                'New York', 'London', 'Tokyo', 'Sydney', 'Paris', 
+                'Berlin', 'Moscow', 'Beijing', 'Mumbai', 'Cairo',
+                'Toronto', 'Rio de Janeiro', 'Bangkok', 'Lagos', 'Mexico City'
+            ]
             
             weather_data = {
                 'temperatures': [],
                 'humidity': [],
                 'pressure': [],
                 'wind_speed': [],
+                'visibility': [],
+                'uv_index': [],
                 'city_names': cities
             }
             
-            # Simulate realistic weather data
+            # Realistic weather patterns based on geographic location
             np.random.seed(42)  # For reproducible results
             
+            climate_data = {
+                'Moscow': {'temp': -2, 'temp_var': 15, 'humidity': 75, 'pressure': 1015},
+                'Berlin': {'temp': 8, 'temp_var': 12, 'humidity': 70, 'pressure': 1013},
+                'London': {'temp': 11, 'temp_var': 8, 'humidity': 78, 'pressure': 1012},
+                'Paris': {'temp': 12, 'temp_var': 10, 'humidity': 72, 'pressure': 1013},
+                'Toronto': {'temp': 3, 'temp_var': 18, 'humidity': 68, 'pressure': 1016},
+                'New York': {'temp': 13, 'temp_var': 15, 'humidity': 65, 'pressure': 1014},
+                'Mexico City': {'temp': 16, 'temp_var': 6, 'humidity': 55, 'pressure': 1018},
+                'Cairo': {'temp': 22, 'temp_var': 8, 'humidity': 45, 'pressure': 1016},
+                'Lagos': {'temp': 28, 'temp_var': 4, 'humidity': 82, 'pressure': 1011},
+                'Mumbai': {'temp': 27, 'temp_var': 5, 'humidity': 75, 'pressure': 1012},
+                'Bangkok': {'temp': 29, 'temp_var': 3, 'humidity': 78, 'pressure': 1011},
+                'Beijing': {'temp': 6, 'temp_var': 20, 'humidity': 58, 'pressure': 1015},
+                'Tokyo': {'temp': 15, 'temp_var': 12, 'humidity': 62, 'pressure': 1013},
+                'Sydney': {'temp': 20, 'temp_var': 8, 'humidity': 68, 'pressure': 1015},
+                'Rio de Janeiro': {'temp': 25, 'temp_var': 5, 'humidity': 75, 'pressure': 1012}
+            }
+            
             for city in cities:
-                # Simulate temperature based on rough geographic expectations
-                if city in ['Moscow', 'Berlin']:
-                    temp = np.random.normal(5, 10)  # Colder cities
-                elif city in ['Sydney']:
-                    temp = np.random.normal(22, 8)  # Warmer cities
-                else:
-                    temp = np.random.normal(15, 12)  # Moderate cities
+                climate = climate_data.get(city, {'temp': 15, 'temp_var': 10, 'humidity': 65, 'pressure': 1013})
+                
+                # Generate realistic weather metrics
+                temp = np.random.normal(climate['temp'], climate['temp_var'])
+                humidity = np.clip(np.random.normal(climate['humidity'], 15), 20, 95)
+                pressure = np.random.normal(climate['pressure'], 8)
+                wind_speed = np.random.exponential(4) + np.random.uniform(0, 3)
+                visibility = np.random.normal(15, 5)  # km
+                uv_index = np.clip(np.random.normal(5, 3), 0, 11)
                 
                 weather_data['temperatures'].append(temp)
-                weather_data['humidity'].append(np.random.uniform(30, 90))
-                weather_data['pressure'].append(np.random.normal(1013, 20))
-                weather_data['wind_speed'].append(np.random.exponential(5))
+                weather_data['humidity'].append(humidity)
+                weather_data['pressure'].append(pressure)
+                weather_data['wind_speed'].append(wind_speed)
+                weather_data['visibility'].append(max(1, visibility))
+                weather_data['uv_index'].append(max(0, uv_index))
                 
-                time.sleep(0.1)  # Simulate API delay
+                time.sleep(0.05)  # Simulate API delay
             
             # Convert to NumPy arrays
-            for key in ['temperatures', 'humidity', 'pressure', 'wind_speed']:
+            for key in ['temperatures', 'humidity', 'pressure', 'wind_speed', 'visibility', 'uv_index']:
                 weather_data[key] = np.array(weather_data[key])
             
             return weather_data
             
         except Exception as e:
-            print(f"Error scraping weather data: {e}")
+            print(f"Error generating weather data: {e}")
             return self._generate_fallback_weather_data()
     
     def scrape_stock_data(self) -> Dict[str, np.ndarray]:
         """
-        Scrape stock market data and convert to NumPy arrays.
+        Generate realistic stock market data for major companies.
+        Based on typical market patterns and financial metrics.
         """
         try:
-            # Simulate stock price data for major companies
-            companies = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NFLX', 'NVDA']
+            # Major technology and growth companies
+            companies = [
+                'AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'META', 'NFLX', 'NVDA',
+                'AMD', 'CRM', 'ADBE', 'PYPL', 'INTC', 'ORCL', 'IBM', 'CSCO'
+            ]
             
             stock_data = {
                 'prices': [],
                 'volumes': [],
                 'market_caps': [],
                 'pe_ratios': [],
+                'dividend_yields': [],
+                'price_changes': [],
                 'symbols': companies
             }
             
-            # Simulate realistic stock data
+            # Realistic stock data based on company profiles
             np.random.seed(123)
             
+            # Company-specific financial profiles
+            company_profiles = {
+                'AAPL': {'price_range': (150, 200), 'pe_range': (25, 35), 'vol_range': (5e7, 1e8)},
+                'GOOGL': {'price_range': (90, 140), 'pe_range': (20, 30), 'vol_range': (2e7, 4e7)},
+                'MSFT': {'price_range': (300, 450), 'pe_range': (25, 35), 'vol_range': (2e7, 5e7)},
+                'AMZN': {'price_range': (120, 180), 'pe_range': (40, 80), 'vol_range': (3e7, 6e7)},
+                'TSLA': {'price_range': (150, 350), 'pe_range': (30, 100), 'vol_range': (5e7, 1.5e8)},
+                'META': {'price_range': (250, 350), 'pe_range': (15, 25), 'vol_range': (2e7, 4e7)},
+                'NFLX': {'price_range': (350, 500), 'pe_range': (20, 40), 'vol_range': (5e6, 2e7)},
+                'NVDA': {'price_range': (400, 800), 'pe_range': (40, 80), 'vol_range': (3e7, 8e7)},
+            }
+            
             for symbol in companies:
-                # Simulate stock prices with different ranges
-                if symbol in ['AAPL', 'GOOGL', 'MSFT']:
-                    price = np.random.uniform(100, 300)
-                elif symbol == 'AMZN':
-                    price = np.random.uniform(80, 180)
-                else:
-                    price = np.random.uniform(50, 500)
+                profile = company_profiles.get(symbol, {
+                    'price_range': (50, 200), 'pe_range': (15, 40), 'vol_range': (1e7, 5e7)
+                })
+                
+                # Generate realistic financial metrics
+                price = np.random.uniform(*profile['price_range'])
+                volume = np.random.uniform(*profile['vol_range'])
+                pe_ratio = np.random.uniform(*profile['pe_range'])
+                
+                # Market cap based on price and realistic shares outstanding
+                shares_outstanding = np.random.uniform(1e9, 8e9)  # 1-8 billion shares
+                market_cap = price * shares_outstanding
+                
+                # Dividend yield (tech companies typically have low yields)
+                dividend_yield = np.random.exponential(0.5) if symbol not in ['TSLA', 'AMZN'] else 0.0
+                dividend_yield = min(dividend_yield, 4.0)  # Cap at 4%
+                
+                # Daily price change
+                price_change = np.random.normal(0, 2.5)  # Normal distribution around 0
                 
                 stock_data['prices'].append(price)
-                stock_data['volumes'].append(np.random.uniform(1e6, 1e8))
-                stock_data['market_caps'].append(np.random.uniform(1e9, 3e12))
-                stock_data['pe_ratios'].append(np.random.uniform(10, 50))
+                stock_data['volumes'].append(volume)
+                stock_data['market_caps'].append(market_cap)
+                stock_data['pe_ratios'].append(pe_ratio)
+                stock_data['dividend_yields'].append(dividend_yield)
+                stock_data['price_changes'].append(price_change)
                 
-                time.sleep(0.1)
+                time.sleep(0.05)
             
             # Convert to NumPy arrays
-            for key in ['prices', 'volumes', 'market_caps', 'pe_ratios']:
+            for key in ['prices', 'volumes', 'market_caps', 'pe_ratios', 'dividend_yields', 'price_changes']:
                 stock_data[key] = np.array(stock_data[key])
             
             return stock_data
             
         except Exception as e:
-            print(f"Error scraping stock data: {e}")
+            print(f"Error generating stock data: {e}")
             return self._generate_fallback_stock_data()
     
     def scrape_population_data(self) -> Dict[str, np.ndarray]:
         """
-        Scrape world population data for countries.
+        Generate realistic world population and demographic data.
+        Based on actual country statistics and development indicators.
         """
         try:
-            # Simulate population data for major countries
+            # Major countries with realistic demographic data
             countries = [
                 'China', 'India', 'United States', 'Indonesia', 'Pakistan',
-                'Brazil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico'
+                'Brazil', 'Nigeria', 'Bangladesh', 'Russia', 'Mexico',
+                'Japan', 'Philippines', 'Ethiopia', 'Vietnam', 'Egypt'
             ]
             
-            # Approximate real population data (in millions)
-            populations = [1439, 1380, 331, 273, 220, 212, 206, 164, 146, 128]
+            # Realistic demographic profiles based on actual data
+            demographic_profiles = {
+                'China': {'pop': 1412, 'gdp': 12556, 'life_exp': 77.1, 'literacy': 96.8},
+                'India': {'pop': 1408, 'gdp': 2389, 'life_exp': 69.7, 'literacy': 77.7},
+                'United States': {'pop': 333, 'gdp': 70248, 'life_exp': 78.9, 'literacy': 99.0},
+                'Indonesia': {'pop': 275, 'gdp': 4691, 'life_exp': 71.7, 'literacy': 96.0},
+                'Pakistan': {'pop': 235, 'gdp': 1766, 'life_exp': 67.3, 'literacy': 59.1},
+                'Brazil': {'pop': 215, 'gdp': 8917, 'life_exp': 75.9, 'literacy': 93.2},
+                'Nigeria': {'pop': 223, 'gdp': 2432, 'life_exp': 54.7, 'literacy': 62.0},
+                'Bangladesh': {'pop': 167, 'gdp': 2688, 'life_exp': 72.8, 'literacy': 74.9},
+                'Russia': {'pop': 144, 'gdp': 12194, 'life_exp': 72.6, 'literacy': 99.7},
+                'Mexico': {'pop': 128, 'gdp': 11290, 'life_exp': 75.2, 'literacy': 95.2},
+                'Japan': {'pop': 125, 'gdp': 39285, 'life_exp': 84.8, 'literacy': 99.0},
+                'Philippines': {'pop': 112, 'gdp': 3548, 'life_exp': 71.2, 'literacy': 96.3},
+                'Ethiopia': {'pop': 123, 'gdp': 925, 'life_exp': 67.8, 'literacy': 51.8},
+                'Vietnam': {'pop': 98, 'gdp': 4086, 'life_exp': 75.4, 'literacy': 95.8},
+                'Egypt': {'pop': 109, 'gdp': 4295, 'life_exp': 72.0, 'literacy': 71.2}
+            }
             
-            # Add some realistic variations
+            # Add realistic variations to the data
             np.random.seed(456)
-            populations = np.array(populations) + np.random.normal(0, 5, len(populations))
-            populations = np.maximum(populations, 1)  # Ensure positive
             
-            # Generate additional demographic data
-            gdp_per_capita = np.random.uniform(1000, 70000, len(countries))
-            life_expectancy = np.random.uniform(60, 85, len(countries))
-            literacy_rate = np.random.uniform(50, 99, len(countries))
+            populations = []
+            gdp_per_capita = []
+            life_expectancy = []
+            literacy_rate = []
+            birth_rates = []
+            urbanization = []
+            
+            for country in countries:
+                profile = demographic_profiles.get(country, {
+                    'pop': 50, 'gdp': 5000, 'life_exp': 70, 'literacy': 80
+                })
+                
+                # Add realistic variations (±2% for most metrics)
+                pop_variation = np.random.normal(1.0, 0.02)
+                gdp_variation = np.random.normal(1.0, 0.05)
+                life_variation = np.random.normal(1.0, 0.01)
+                lit_variation = np.random.normal(1.0, 0.02)
+                
+                populations.append(max(1, profile['pop'] * pop_variation))
+                gdp_per_capita.append(max(500, profile['gdp'] * gdp_variation))
+                life_expectancy.append(max(50, min(90, profile['life_exp'] * life_variation)))
+                literacy_rate.append(max(30, min(100, profile['literacy'] * lit_variation)))
+                
+                # Generate correlated birth rates and urbanization
+                birth_rate = max(5, 50 - profile['gdp'] / 1000 + np.random.normal(0, 3))
+                urban_rate = min(95, max(20, 30 + profile['gdp'] / 500 + np.random.normal(0, 5)))
+                
+                birth_rates.append(birth_rate)
+                urbanization.append(urban_rate)
             
             return {
                 'countries': countries,
-                'populations': populations,
-                'gdp_per_capita': gdp_per_capita,
-                'life_expectancy': life_expectancy,
-                'literacy_rate': literacy_rate
+                'populations': np.array(populations),
+                'gdp_per_capita': np.array(gdp_per_capita),
+                'life_expectancy': np.array(life_expectancy),
+                'literacy_rate': np.array(literacy_rate),
+                'birth_rate': np.array(birth_rates),
+                'urbanization_rate': np.array(urbanization)
             }
             
         except Exception as e:
-            print(f"Error scraping population data: {e}")
+            print(f"Error generating population data: {e}")
             return self._generate_fallback_population_data()
     
     def scrape_cryptocurrency_data(self) -> Dict[str, np.ndarray]:

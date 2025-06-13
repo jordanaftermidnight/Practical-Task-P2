@@ -1,8 +1,12 @@
 """
 Simulation Proof: Recreating the Dog Breeder Picture Shredding Effect with NumPy
 
+Author: George Dorochov
+Email: jordanaftermidnight@gmail.com
+
 This module demonstrates the famous "dog breeder" meme effect where a picture is shredded
 and seemingly multiplied, creating an illusion that suggests we live in a simulation.
+Uses advanced NumPy array operations for image manipulation and analysis.
 """
 
 import numpy as np

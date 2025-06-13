@@ -1,6 +1,9 @@
 """
 NumPy Analytics Module
 
+Author: George Dorochov
+Email: jordanaftermidnight@gmail.com
+
 Advanced statistical analysis and data processing using NumPy arrays.
 Performs comprehensive analysis on scraped data including descriptive statistics,
 filtering, correlations, and advanced mathematical operations.
