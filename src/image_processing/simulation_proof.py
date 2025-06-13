@@ -221,7 +221,7 @@ class SimulationProof:
         x_offset = 0
         for i, strip in enumerate(strips):
             strip_width = strip.shape[1]
-            if i % 2 == 0:  # Separate every other strip
+            if i % 2 == 0 and x_offset + strip_width <= original.shape[1]:  # Separate every other strip
                 shredded_visualization[:, x_offset:x_offset+strip_width] = strip
             x_offset += strip_width + 5  # Add gap
         
